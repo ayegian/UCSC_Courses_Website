@@ -1,0 +1,11 @@
+smaller logo, DONE
+ put by alex in footer, DONE
+ ROBUST TESTING PLAN, FINISHED TESTING MAKE PLAN
+change style for search bar (looks too much like button confusing), DONE
+ fix spacing to be more consistent DONE
+ too crowded in certain areas CHECK WITH HER 
+possibly gif or mp4 showing how to download unofficial transcript, DONE
+ fix instructions section (make shorter and more consise and make sure to put instructions to upload file before submission buttons) CHECK WITH HER
+
+ Look at product page how-to sections for how to make more complex info fairly easy to understand. reserach product launch test things. 
+Make CTAs different colors to distinguish them.

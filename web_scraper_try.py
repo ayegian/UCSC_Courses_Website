@@ -887,8 +887,6 @@ def returnCourseList():
 
 
 
-returnCourseList()
-
 
 #course_list = scrape_course('https://catalog.ucsc.edu/Current/General-Catalog/Courses/AM-Applied-Mathematics')
 # #course_list = scrape_course('https://catalog.ucsc.edu/Current/General-Catalog/Courses/STAT-Statistics')

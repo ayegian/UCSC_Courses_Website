@@ -6,6 +6,7 @@ const cors = require("cors");
 const formidable = require("formidable");
 const fs = require("fs-extra");
 const {spawn} = require('child_process');
+const { restart } = require('nodemon');
 
 
 const uploadPath = "D:/python/ucsc_courses_website/server/uploads/"
@@ -120,8 +121,70 @@ app.post("/api/post-transcript",(req,res)=>{
 
 });
 
+async function getStuff(req, res, retRes){
+  //requiring path and fs modules
+  const path = require('path');
+  // const fs = require('fs');
+  //joining path of directory 
+  const directoryPath = "D:/python/ucsc_courses_website/server/uploads";
+  //passsing directoryPath and callback function
+  await fs.readdir(directoryPath, async function (err, files) {
+      //handling error
+      if (err) {
+          return console.log('Unable to scan directory: ' + err);
+      } 
+      //listing all files using forEach
+      files.forEach(function (file) {
+          // Do whatever you want to do with the file
+          const python = spawn('python', ['./pdfTextExtract.py', file]);
+          python.stdout.on('data', function (data) {
+          //  console.log('Pipe data from python script ...');
+              dataToSend = data.toString();
+              retRes.push([dataToSend, file]);
+              console.log(file);
+          //  console.log("DATA BEF STR: ",data)
+              // console.log("DATA AFT STR: ", dataToSend)
+              // retRes.push(dataToSend);
+          });
+          // console.log("DATA SEND: ", dataToSend)
+          python.on('exit', (code) => {
+          // console.log(`child process close all stdio with code ${code}`);
+
+           // console.log(dataToSend);
+          //   res.send(dataToSend);
+            if(retRes.length == files.length){
+                console.log("DONE READDIR");
+                console.log("RET RES: ")
+                console.log(retRes.length);
+                res.send(retRes);
+            }
+          });
+      });
+
+
+  });
+}
+
+app.get("/api/test-get-files", (req, res) =>{
+    console.log("Connected14444")
+    var retRes = [];
+    getStuff(req, res, retRes);
+});
+
+app.post("/api/save-test", (req, res) =>{
+    console.log("Connected14")
+    console.log(req.body)
+    fs.writeFile("../test/jstxts/"+req.body[1]+".txt", req.body[0], function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    });
+    res.send("saved");
+})
+
 app.get("/api/get-courses", (req, res) =>{
-    console.log("Connected3")
+    console.log("Connected")
     sql = "SELECT * FROM COURSES2 WHERE GE != '' ORDER BY GE, Name";
     mydb.query(sql, function (err, result, fields) {
         if (err) throw err;
