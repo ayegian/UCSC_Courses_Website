@@ -5,7 +5,47 @@ import UCSC_Logo from "./ucsc_logo2.png";
 import Collapsible from './Collapsible';
 import logo from './logo.svg';
 import instructionsGif from './instructionsGif.gif'
+// Import the functions you need from the SDKs you need
 
+import { initializeApp } from "firebase/app";
+
+import { getAnalytics } from "firebase/analytics";
+
+// TODO: Add SDKs for Firebase products that you want to use
+
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+
+// Your web app's Firebase configuration
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyCqFI6_JSCPVvzIhDOI7a677GKkKjHATm4",
+
+  authDomain: "ucsc-ge-checker.firebaseapp.com",
+
+  databaseURL: "https://ucsc-ge-checker-default-rtdb.firebaseio.com",
+
+  projectId: "ucsc-ge-checker",
+
+  storageBucket: "ucsc-ge-checker.appspot.com",
+
+  messagingSenderId: "113436054681",
+
+  appId: "1:113436054681:web:60540f7de2be9fcbd59408",
+
+  measurementId: "G-6EKR9YK0Q9"
+
+};
+
+
+// Initialize Firebase
+
+const app = initializeApp(firebaseConfig);
+
+const analytics = getAnalytics(app);
 // import listReactFiles from 'list-react-files'
 
 // import {saveAs} from 'FileSaver';

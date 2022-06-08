@@ -9,6 +9,7 @@
     "axios": "^0.27.2",
     "file-saver": "^2.0.5",
     "FileSaver": "^0.10.0",
+    "firebase": "^9.8.2",
     "fs": "^0.0.1-security",
     "list-react-files": "^0.2.0",
     "move-file": "^3.0.0",
