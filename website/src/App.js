@@ -216,7 +216,9 @@ async function testParsePDF(pdfText, creditFunc, fileName){
     }
   });
   console.log("GESTR: ", GEStr);
-  await Axios.post("http://localhost:8080/api/save-test", [GEStr, FN]).then(()=>console.log("Posted test"));
+  // await Axios.post("http://localhost:8080/api/save-test", [GEStr, FN]).then(()=>console.log("Posted test"));
+  await Axios.post("https://ucsc-courses-website-server.vercel.app/api/save-test", [GEStr, FN]).then(()=>console.log("Posted test"));
+
   // saveAs(file, "D:/python/ucsc_courses_website/test/tests.txt");
   // var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
   // FileSaver.saveAs(blob, "hello world.txt");
@@ -273,7 +275,8 @@ function App() {
   const [filePath, updatePath] = React.useState("No file chosen");
   const [fileUploaded, updateUploaded] = React.useState(0);
   async function getCourses(){
-    var courses = await Axios.get("http://localhost:8080/api/get-courses");
+    // var courses = await Axios.get("http://localhost:8080/api/get-courses");
+    var courses = await Axios.get("https://ucsc-courses-website-server.vercel.app/api/get-courses");
     courses = courses.data;
     courses.forEach(element => {
       element.GE = element.GE.substr(1, element.GE.length-2);
@@ -315,9 +318,12 @@ function App() {
   async function giveFiles(){
     console.log("START GIVE");
     var resData;
-    var courses = await Axios.get("http://localhost:8080/api/test-get-files").then(response =>{
+    var courses = await Axios.get("https://ucsc-courses-website-server.vercel.app/api/test-get-files").then(response =>{
       resData = response.data;
     });
+    // var courses = await Axios.get("http://localhost:8080/api/test-get-files").then(response =>{
+    //   resData = response.data;
+    // });
     for(let x = 0; x<resData.length; ++x){
       await testParsePDF(resData[x][0], updateCreditsFunc, resData[x][1]);
     }
@@ -354,7 +360,9 @@ function App() {
     };
     //console.log("BEFORE MAP: ", courseMap);
     //var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
-    var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
+    // var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
+    var courses = await Axios.post("https://ucsc-courses-website-server.vercel.app/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
+
     //console.log("COURSES: ", courses)
     updateUploaded(2);
   }
@@ -373,7 +381,9 @@ function App() {
     };
     //console.log("BEFORE MAP: ", courseMap);
     //var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
-    var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{ testParsePDF(response.data, updateCreditsFunc,file.name);});
+    // var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{ testParsePDF(response.data, updateCreditsFunc,file.name);});
+    var courses = await Axios.post("https://ucsc-courses-website-server.vercel.app/post-transcript", formData, config).then(response=>{ testParsePDF(response.data, updateCreditsFunc,file.name);});
+
     //console.log("COURSES: ", courses)
     updateUploaded(2);
   }
