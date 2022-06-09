@@ -22,6 +22,7 @@ const PORT = process.env.PORT || 8080;
 
 
  app.post('/upload-avatar', async (req, res) => {
+    console.log("Upload avatar");
      var form = new formidable.IncomingForm();
      console.log("FORM BEF");
      console.log(form);
@@ -41,7 +42,7 @@ const PORT = process.env.PORT || 8080;
 
 
  app.post('/api/upload', (req, res, next) => {
-
+    console.log("API UPLOAD\n");
      const form = new formidable.IncomingForm();
      form.parse(req, function(err, fields, files){
           console.log("FORM");
@@ -77,11 +78,12 @@ const PORT = process.env.PORT || 8080;
  })
 
  app.get("/test-working", (req, res) =>{
-     res.send("UCSC Courses Server");
+     console.log("test working");
+     res.send("UCSC Courses Server test");
  })
 
  app.post("/api/post-transcript",(req,res)=>{
-    
+     console.log("POSt transcript");
      const form = new formidable.IncomingForm();
      form.parse(req, function(err, fields, files){
          console.log("FILES");
@@ -106,6 +108,7 @@ const PORT = process.env.PORT || 8080;
  });
 
  async function getStuff(req, res, retRes){
+    console.log("GET STUFF");
    const path = require('path');
    const directoryPath = "D:/python/ucsc_courses_website/server/uploads";
    await fs.readdir(directoryPath, async function (err, files) {
