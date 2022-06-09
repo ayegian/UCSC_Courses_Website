@@ -8,7 +8,8 @@ import Collapsible from './Collapsible';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <span>
-    <App />
+        <title>Test Title</title>
+        <App />
 
     </span>
 );
