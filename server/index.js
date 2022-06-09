@@ -92,6 +92,10 @@ app.get("/", (req, res) =>{
     res.send("UCSC Courses Server");
 })
 
+app.get("/test-working", (req, res) =>{
+    res.send("UCSC Courses Server");
+})
+
 app.post("/api/post-transcript",(req,res)=>{
     // console.log("Posting Transcript");
     
