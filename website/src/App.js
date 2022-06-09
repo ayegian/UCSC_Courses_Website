@@ -6,7 +6,7 @@ import Collapsible from './Collapsible';
 import logo from './logo.svg';
 import instructionsGif from './instructionsGif.gif'
 // Import the functions you need from the SDKs you need
-
+//asfa
 import { initializeApp } from "firebase/app";
 
 import { getAnalytics } from "firebase/analytics";
