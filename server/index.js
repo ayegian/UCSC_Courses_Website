@@ -152,8 +152,8 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
         console.log(files);
         const src = files.file.filepath;
         const dest = uploadPath+files.file.originalFilename;
-        fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully")).then(() =>{
-            console.log("Start Extract");
+        //fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully")).then(() =>{
+            //console.log("Start Extract");
             // const pdfExtract = new PDFExtract();
             // const options = {}; /* see below */
             // pdfExtract.extract('./uploads/'+files.file.originalFilename, options, (err, data) => {
@@ -171,10 +171,11 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
             //     var dataToSend = data;
             //     res.send(dataToSend);
             //   });
-            console.log("End Extract");
-            res.send("TEST");
+            //console.log("End Extract");
 
-        });
+        //});
+        res.send("TEST");
+
     //     console.log("SPAWN PYTHON");
         //const python = spawn();
         // const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
