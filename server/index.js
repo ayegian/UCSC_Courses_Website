@@ -174,14 +174,16 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
             //console.log("End Extract");
 
         //});
-        pdfUtil.pdfToText(src, function(err, data) {
-            if (err) {throw(err);}
-            console.log("Data:");
-            console.log(data); //print all text    
-            var dataToSend = data;
-            res.send(dataToSend);
-        });
-        // res.send("TEST");
+
+        
+        // pdfUtil.pdfToText(src, function(err, data) {
+        //     if (err) {throw(err);}
+        //     console.log("Data:");
+        //     console.log(data); //print all text    
+        //     var dataToSend = data;
+        //     res.send(dataToSend);
+        // });
+        res.send("TEST");
 
     //     console.log("SPAWN PYTHON");
         //const python = spawn();
