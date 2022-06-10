@@ -117,7 +117,7 @@ const PORT = process.env.PORT || 8080;
 
 
 
-app.get("/api/post-transcript",(req,res)=>{
+const handler = app.get("/api/post-transcript",(req,res)=>{
     console.log("POSt transcript");
     const form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files){
@@ -222,3 +222,31 @@ app.get("/api/test", async (req, res)=>{
 
 // const PORT = process.env.PORT || 8080;
 // app.listen(PORT, ()=>console.log(`Server is running on port: ${PORT}`));
+
+
+
+
+const allowCors = fn => async (req, res) => {
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    // another common pattern
+    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    )
+    if (req.method === 'OPTIONS') {
+      res.status(200).end()
+      return
+    }
+    return await fn(req, res)
+  }
+  
+//   const handler = (req, res) => {
+//     const d = new Date()
+//     res.end(d.toString())
+//   }
+  
+  module.exports = allowCors(handler)
+  
