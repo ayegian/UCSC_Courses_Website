@@ -104,31 +104,40 @@ const PORT = process.env.PORT || 8080;
 
  });
 
-
 //  app.post("/api/post-transcript",(req,res)=>{
-//     console.log("POSt transcript");
-//     const form = new formidable.IncomingForm();
-//     form.parse(req, function(err, fields, files){
-//         console.log("FILES");
-//         console.log(files);
-//         const src = files.file.filepath;
-//         const dest = uploadPath+files.file.originalFilename;
-//         fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully"));
-//         var dataToSend;
-//         console.log("SPAWN PYTHON");
-//         const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
-//         python.stdout.on('data', function (data) {
-//          dataToSend = data.toString();
+//     //  console.log("POSt transcript");
+//     //  const form = new formidable.IncomingForm();
+//     //  form.parse(req, function(err, fields, files){
+//     //      console.log("FILES");
+//     //      console.log(files);  
+//     //  })
+//     res.send("Post Transcript");
 
-//         });
-//         console.log("CLOSE PYTHON");
-//         python.on('close', (code) => {
-//         res.send(dataToSend);
-//         });
- 
-//     })
+//  });
 
-// });
+
+
+app.get("/api/post-transcript",(req,res)=>{
+    console.log("POSt transcript");
+    const form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files){
+        console.log("FILES");
+        console.log(files);
+        const src = files.file.filepath;
+        const dest = uploadPath+files.file.originalFilename;
+        fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully"));
+        var dataToSend;
+        console.log("SPAWN PYTHON");
+        const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
+        python.stdout.on('data', function (data) {
+         dataToSend = data.toString();
+         });
+        console.log("CLOSE PYTHON");
+        python.on('close', (code) => {
+        res.send(dataToSend);
+        });
+    })
+});
 
  async function getStuff(req, res, retRes){
     console.log("GET STUFF");
