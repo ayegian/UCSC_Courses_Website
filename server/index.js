@@ -7,6 +7,8 @@ const formidable = require("formidable");
 const fs = require("fs-extra");
 const {spawn} = require('child_process');
 const { restart } = require('nodemon');
+const {PythonShell} =require('python-shell');
+const PDFExtract = require('pdf.js-extract').PDFExtract;
 const PORT = process.env.PORT || 8080;
 
 
@@ -153,13 +155,20 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
         const dest = uploadPath+files.file.originalFilename;
         fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully"));
     //     console.log("SPAWN PYTHON");
-        const python = spawn();
+        //const python = spawn();
         // const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
         //python.stdout.on('data', function (data) {
         //dataToSend = data.toString();
         // });
         //console.log("CLOSE PYTHON");
         //python.on('close', (code) => {
+        const pdfExtract = new PDFExtract();
+        const options = {}; /* see below */
+        pdfExtract.extract('./uploads/'+files.file.originalFilename, options, (err, data) => {
+        if (err) {return console.log(err);}
+            console.log(data);
+            dataToSend = data;
+        });
         res.send(dataToSend);
         //});
     })
