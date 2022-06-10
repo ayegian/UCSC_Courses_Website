@@ -10,6 +10,9 @@ const { restart } = require('nodemon');
 const PORT = process.env.PORT || 8080;
 
 
+
+
+
  const uploadPath = __dirname + '/uploads/';
 
  var mydb = mysql.createPool({
@@ -64,8 +67,10 @@ const PORT = process.env.PORT || 8080;
 
  app.use(bodyParser.urlencoded({extended: true}));
  app.use(express.json());
- app.use(cors());
-
+//  app.use(cors());
+ app.use(cors({
+    origin: 'https://ucsc-courses-website.vercel.app/'
+}));
  app.use(function (req, res, next) {
      res.header("Access-Control-Allow-origin", "*")
      res.setHeader('Access-Control-Allow-Methods', "GET,POST,OPTIONS")
@@ -226,27 +231,27 @@ app.get("/api/test", async (req, res)=>{
 
 
 
-const allowCors = fn => async (req, res) => {
-    res.setHeader('Access-Control-Allow-Credentials', true)
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    // another common pattern
-    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-    )
-    if (req.method === 'OPTIONS') {
-      res.status(200).end()
-      return
-    }
-    return await fn(req, res)
-  }
-  
-//   const handler = (req, res) => {
-//     const d = new Date()
-//     res.end(d.toString())
+// const allowCors = fn => async (req, res) => {
+//     res.setHeader('Access-Control-Allow-Credentials', true)
+//     res.setHeader('Access-Control-Allow-Origin', '*')
+//     // another common pattern
+//     // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+//     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+//     res.setHeader(
+//       'Access-Control-Allow-Headers',
+//       'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+//     )
+//     if (req.method === 'OPTIONS') {
+//       res.status(200).end()
+//       return
+//     }
+//     return await fn(req, res)
 //   }
   
-  module.exports = allowCors(handler)
+// //   const handler = (req, res) => {
+// //     const d = new Date()
+// //     res.end(d.toString())
+// //   }
+  
+//   module.exports = allowCors(handler)
   
