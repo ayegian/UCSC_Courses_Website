@@ -11,6 +11,9 @@ import { initializeApp } from "firebase/app";
 
 import { getAnalytics } from "firebase/analytics";
 
+var pdfUtil = require('pdf-to-text');
+
+
 // TODO: Add SDKs for Firebase products that you want to use
 
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -360,13 +363,13 @@ function App() {
         'Access-Control-Allow-Origin' : '*',        
       },
     };
-    // pdfUtil.pdfToText(file.name, function(err, data) {
-    //   if (err) {throw(err);}
-    //    console.log("Data:");
-    //    console.log(data); //print all text    
-    //    var dataToSend = data;
-    //    res.send(dataToSend);
-    // });
+    pdfUtil.pdfToText(file.name, function(err, data) {
+      if (err) {throw(err);}
+       console.log("Data:");
+       console.log(data); //print all text    
+       var dataToSend = data;
+    //   res.send(dataToSend);
+    });
     //console.log("BEFORE MAP: ", courseMap);
     //var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
     //var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{console.log(response.data); parsePDF(response.data, updateCreditsFunc);});
