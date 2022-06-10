@@ -360,10 +360,9 @@ function App() {
     };
     //console.log("BEFORE MAP: ", courseMap);
     //var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
-    // var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
+    var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{console.log(response.data); parsePDF(response.data, updateCreditsFunc);});
     // var courses = await Axios.post("https://ucsc-courses-website-server.vercel.app/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
-    var courses = await Axios.post("https://ucsc-courses-website-server.vercel.app/api/post-transcript", formData, config).then(response=>{ console.log(response.data); parsePDF(response.data, updateCreditsFunc);});
-    // var courses = await Axios.get("http://localhost:8080/api/get-stuff-2", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
+    //var courses = await Axios.post("https://ucsc-courses-website-server.vercel.app/api/post-transcript", formData, config).then(response=>{ console.log(response.data); parsePDF(response.data, updateCreditsFunc);});
 
     console.log("COURSES: ", courses)
     updateUploaded(2);

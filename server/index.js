@@ -10,7 +10,7 @@ const { restart } = require('nodemon');
 const {PythonShell} =require('python-shell');
 const PDFExtract = require('pdf.js-extract').PDFExtract;
 const PORT = process.env.PORT || 8080;
-
+var pdfUtil = require('pdf-to-text');
 
 
 
@@ -150,10 +150,30 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
     form.parse(req, function(err, fields, files){
         console.log("FILES");
         console.log(files);
-        var dataToSend = "TEST";
         const src = files.file.filepath;
         const dest = uploadPath+files.file.originalFilename;
-        fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully"));
+        fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully")).then(() =>{
+            console.log("Start Extract");
+            // const pdfExtract = new PDFExtract();
+            // const options = {}; /* see below */
+            // pdfExtract.extract('./uploads/'+files.file.originalFilename, options, (err, data) => {
+            // if (err) {console.log("ERR");console.log(err); return;}
+            //     console.log("DATA");
+            //     console.log(data.text);
+            //     dataToSend = data;
+            // });
+            // console.log("End extract");
+            
+            pdfUtil.pdfToText("./uploads/SSR_TSRPT(5).pdf", function(err, data) {
+                if (err) throw(err);
+                console.log("Data:");
+                console.log(data); //print all text    
+                var dataToSend = data;
+                res.send(dataToSend);
+              });
+            console.log("End Extract");
+
+        });
     //     console.log("SPAWN PYTHON");
         //const python = spawn();
         // const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
@@ -162,14 +182,7 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
         // });
         //console.log("CLOSE PYTHON");
         //python.on('close', (code) => {
-        const pdfExtract = new PDFExtract();
-        const options = {}; /* see below */
-        pdfExtract.extract('./uploads/'+files.file.originalFilename, options, (err, data) => {
-        if (err) {return console.log(err);}
-            console.log(data);
-            dataToSend = data;
-        });
-        res.send(dataToSend);
+        
         //});
     })
 });
