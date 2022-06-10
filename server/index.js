@@ -144,15 +144,14 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
       return
     }
     const form = new formidable.IncomingForm();
-    res.send("RESULT");
 
-    // form.parse(req, function(err, fields, files){
-    //     console.log("FILES");
-    //     console.log(files);
+    form.parse(req, function(err, fields, files){
+        console.log("FILES");
+        console.log(files);
+        var dataToSend = "TEST";
     //     const src = files.file.filepath;
     //     const dest = uploadPath+files.file.originalFilename;
     //     fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully"));
-    //     var dataToSend;
     //     console.log("SPAWN PYTHON");
     //     const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
     //     python.stdout.on('data', function (data) {
@@ -160,9 +159,9 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
     //      });
     //     console.log("CLOSE PYTHON");
     //     python.on('close', (code) => {
-    //     res.send(dataToSend);
+        res.send(dataToSend);
     //     });
-    // })
+    })
 });
 
 
