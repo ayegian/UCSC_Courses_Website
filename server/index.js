@@ -164,7 +164,7 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
             // });
             // console.log("End extract");
             
-            pdfUtil.pdfToText("./uploads/SSR_TSRPT(5).pdf", function(err, data) {
+            pdfUtil.pdfToText("./uploads/"+files.file.originalFilename, function(err, data) {
                 if (err) throw(err);
                 console.log("Data:");
                 console.log(data); //print all text    
