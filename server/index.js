@@ -143,24 +143,25 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
       res.status(200).end()
       return
     }
-    const form = new formidable.IncomingForm();
-    form.parse(req, function(err, fields, files){
-        console.log("FILES");
-        console.log(files);
-        const src = files.file.filepath;
-        const dest = uploadPath+files.file.originalFilename;
-        fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully"));
-        var dataToSend;
-        console.log("SPAWN PYTHON");
-        const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
-        python.stdout.on('data', function (data) {
-        dataToSend = data.toString();
-         });
-        console.log("CLOSE PYTHON");
-        python.on('close', (code) => {
-        res.send(dataToSend);
-        });
-    })
+    res.send("RESULT");
+    // const form = new formidable.IncomingForm();
+    // form.parse(req, function(err, fields, files){
+    //     console.log("FILES");
+    //     console.log(files);
+    //     const src = files.file.filepath;
+    //     const dest = uploadPath+files.file.originalFilename;
+    //     fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully"));
+    //     var dataToSend;
+    //     console.log("SPAWN PYTHON");
+    //     const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
+    //     python.stdout.on('data', function (data) {
+    //     dataToSend = data.toString();
+    //      });
+    //     console.log("CLOSE PYTHON");
+    //     python.on('close', (code) => {
+    //     res.send(dataToSend);
+    //     });
+    // })
 });
 
 
