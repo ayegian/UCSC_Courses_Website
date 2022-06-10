@@ -349,18 +349,24 @@ function App() {
   async function postFile(){
     updateUploaded(1);
     //console.log("ALL COURSES: ", allCourses);
-    //console.log("POSTING FILE: ", file.name);
+    console.log("POSTING FILE: ", file.name);
+    console.log("FILE PATH: ", file)
     const formData = new FormData();
     formData.append('file', file);
     formData.append('fileName', file.name);
     const config = {
       headers: {
         'content-type': 'multipart/form-data',
-        'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        
+        'Access-Control-Allow-Origin' : 'https://ucsc-courses-website-server.vercel.app/api/post-transcript',        
       },
     };
+    // pdfUtil.pdfToText(file.name, function(err, data) {
+    //   if (err) {throw(err);}
+    //    console.log("Data:");
+    //    console.log(data); //print all text    
+    //    var dataToSend = data;
+    //    res.send(dataToSend);
+    // });
     //console.log("BEFORE MAP: ", courseMap);
     //var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
     //var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{console.log(response.data); parsePDF(response.data, updateCreditsFunc);});
