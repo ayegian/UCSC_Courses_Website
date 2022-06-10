@@ -363,18 +363,18 @@ function App() {
         'Access-Control-Allow-Origin' : '*',        
       },
     };
-    pdfUtil.pdfToText(file.name, function(err, data) {
-      if (err) {throw(err);}
-       console.log("Data:");
-       console.log(data); //print all text    
-       var dataToSend = data;
-    //   res.send(dataToSend);
-    });
+    // pdfUtil.pdfToText(file.name, function(err, data) {
+    //   if (err) {throw(err);}
+    //    console.log("Data:");
+    //    console.log(data); //print all text    
+    //    var dataToSend = data;
+    // //   res.send(dataToSend);
+    // });
     //console.log("BEFORE MAP: ", courseMap);
     //var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
     //var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{console.log(response.data); parsePDF(response.data, updateCreditsFunc);});
     // var courses = await Axios.post("https://ucsc-courses-website-server.vercel.app/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
-    var courses = await Axios.get("https://ucsc-courses-website-server.vercel.app/api/post-transcript", formData, config).then(response=>{console.log("RESPONSE");console.log(response.data); parsePDF(response.data, updateCreditsFunc);});
+    var courses = await Axios.post("https://ucsc-courses-website-server.vercel.app/api/post-transcript", formData, config).then(response=>{console.log("RESPONSE");console.log(response.data); parsePDF(response.data, updateCreditsFunc);});
 
     console.log("COURSES: ", courses)
     updateUploaded(2);
