@@ -127,7 +127,9 @@ var corsOptions = {
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
   
-
+app.get("/api/post-transcript", cors(corsOptions), (req,res)=>{
+    res.send("TEST2");
+});
 
 
 app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
