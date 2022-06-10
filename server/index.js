@@ -164,14 +164,15 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
             // });
             // console.log("End extract");
             
-            pdfUtil.pdfToText("./uploads/"+files.file.originalFilename, function(err, data) {
-                if (err) throw(err);
-                console.log("Data:");
-                console.log(data); //print all text    
-                var dataToSend = data;
-                res.send(dataToSend);
-              });
+            // pdfUtil.pdfToText("./uploads/"+files.file.originalFilename, function(err, data) {
+            //     if (err) throw(err);
+            //     console.log("Data:");
+            //     console.log(data); //print all text    
+            //     var dataToSend = data;
+            //     res.send(dataToSend);
+            //   });
             console.log("End Extract");
+            res.send("TEST");
 
         });
     //     console.log("SPAWN PYTHON");
