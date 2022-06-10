@@ -93,6 +93,17 @@ const PORT = process.env.PORT || 8080;
 
  });
 
+ app.get("/api/post-transcript",(req,res)=>{
+    //  console.log("POSt transcript");
+    //  const form = new formidable.IncomingForm();
+    //  form.parse(req, function(err, fields, files){
+    //      console.log("FILES");
+    //      console.log(files);  
+    //  })
+    res.send("Post Transcript");
+
+ });
+
 
 //  app.post("/api/post-transcript",(req,res)=>{
 //     console.log("POSt transcript");
