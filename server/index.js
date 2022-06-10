@@ -9,7 +9,7 @@ const {spawn} = require('child_process');
 const { restart } = require('nodemon');
 const {PythonShell} =require('python-shell');
 const PDFExtract = require('pdf.js-extract').PDFExtract;
-const PORT = process.env.PORT || 8080;
+// const PORT = process.env.PORT || 8080;
 var pdfUtil = require('pdf-to-text');
 
 
@@ -75,12 +75,12 @@ var pdfUtil = require('pdf-to-text');
  app.use(cors({
     origin: 'https://ucsc-courses-website.vercel.app/'
 }));
- app.use(function (req, res, next) {
-     res.header("Access-Control-Allow-origin", "*")
-     res.setHeader('Access-Control-Allow-Methods', "GET,POST,OPTIONS")
-     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-     next();
- })
+//  app.use(function (req, res, next) {
+//      res.header("Access-Control-Allow-origin", "*")
+//      res.setHeader('Access-Control-Allow-Methods', "GET,POST,OPTIONS")
+//      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+//      next();
+//  })
 
 //  app.get("/", (req, res) =>{
 //      res.send("UCSC Courses Server");
@@ -311,18 +311,18 @@ const product = require("./api/product");
 
 app.use("/api/product", product);
 
-// const PORT = process.env.PORT || 8080;
-// app.listen(PORT, ()=>console.log(`Server is running on port: ${PORT}`));
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, ()=>console.log(`Server is running on port: ${PORT}`));
 
-const getCourses = require("./api/get-courses.js");
+const getCourses = require("./api/get-courses");
 app.use("/api/get-courses", getCourses);
 
 const postTranscript = require("./api/post-transcript");
 app.use("api/post-transcript", postTranscript);
 
-app.listen(PORT, () => {
-    console.log("RUNNING");
-});
+// app.listen(PORT, () => {
+//     console.log("RUNNING");
+// });
 
 // const allowCors = fn => async (req, res) => {
 //     res.setHeader('Access-Control-Allow-Credentials', true)
