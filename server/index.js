@@ -153,7 +153,7 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
         const dest = uploadPath+files.file.originalFilename;
         fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully"));
     //     console.log("SPAWN PYTHON");
-        const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
+        // const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
         //python.stdout.on('data', function (data) {
         //dataToSend = data.toString();
         // });
