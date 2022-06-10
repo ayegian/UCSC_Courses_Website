@@ -11,7 +11,7 @@ import { initializeApp } from "firebase/app";
 
 import { getAnalytics } from "firebase/analytics";
 
-var pdfUtil = require('pdf-to-text');
+// var pdfUtil = require('pdf-to-text');
 
 
 // TODO: Add SDKs for Firebase products that you want to use
