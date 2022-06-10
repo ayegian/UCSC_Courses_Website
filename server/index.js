@@ -129,7 +129,7 @@ var corsOptions = {
   
 app.get("/api/post-transcript", cors(corsOptions), (req,res)=>{
     res.send("TEST2");
-    const form = new formidable.IncomingForm();
+    // const form = new formidable.IncomingForm();
 
     // form.parse(req, function(err, fields, files){
     //     console.log("FILES");
