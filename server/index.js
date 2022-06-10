@@ -131,11 +131,11 @@ app.get("/api/post-transcript", cors(corsOptions), (req,res)=>{
     res.send("TEST2");
     const form = new formidable.IncomingForm();
 
-    form.parse(req, function(err, fields, files){
-        console.log("FILES");
-        console.log(files);
-        const src = files.file.filepath;
-        const dest = uploadPath+files.file.originalFilename;});
+    // form.parse(req, function(err, fields, files){
+    //     console.log("FILES");
+    //     console.log(files);
+    //     const src = files.file.filepath;
+    //     const dest = uploadPath+files.file.originalFilename;});
 });
 
 
