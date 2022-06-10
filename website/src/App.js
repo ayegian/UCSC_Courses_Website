@@ -356,8 +356,9 @@ function App() {
     const config = {
       headers: {
         'content-type': 'multipart/form-data',
-        'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        // 'Access-Control-Allow-Origin' : '*',
+        // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        
       },
     };
     //console.log("BEFORE MAP: ", courseMap);
