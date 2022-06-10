@@ -174,7 +174,7 @@ app.get("/api/post-transcript",(req,res)=>{
  app.get("/api/test-get-files", (req, res) =>{
      console.log("Connected14444")
      var retRes = [];
-     getStuff(req, res, retRes);
+     (req, res, retRes);
  });
 
  app.post("/api/save-test", (req, res) =>{
