@@ -130,23 +130,36 @@ var corsOptions = {
 
 app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
     console.log("POSt transcript");
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', '*')
+  // another common pattern
+  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    )
+    if (req.method === 'OPTIONS') {
+      res.status(200).end()
+      return
+    }
     const form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files){
         console.log("FILES");
-        // console.log(files);
-        // const src = files.file.filepath;
-        // const dest = uploadPath+files.file.originalFilename;
-        // fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully"));
-        // var dataToSend;
-        // console.log("SPAWN PYTHON");
-        // const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
-        // python.stdout.on('data', function (data) {
-        //  dataToSend = data.toString();
-        //  });
-        // console.log("CLOSE PYTHON");
-        // python.on('close', (code) => {
-        // res.send(dataToSend);
-        // });
+        console.log(files);
+        const src = files.file.filepath;
+        const dest = uploadPath+files.file.originalFilename;
+        fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully"));
+        var dataToSend;
+        console.log("SPAWN PYTHON");
+        const python = spawn('python', ['./pdfTextExtract.py', files.file.originalFilename]);
+        python.stdout.on('data', function (data) {
+        dataToSend = data.toString();
+         });
+        console.log("CLOSE PYTHON");
+        python.on('close', (code) => {
+        res.send(dataToSend);
+        });
     })
 });
 
