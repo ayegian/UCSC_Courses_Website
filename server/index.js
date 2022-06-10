@@ -143,8 +143,9 @@ app.post("/api/post-transcript", cors(corsOptions), (req,res)=>{
       res.status(200).end()
       return
     }
+    const form = new formidable.IncomingForm();
     res.send("RESULT");
-    // const form = new formidable.IncomingForm();
+
     // form.parse(req, function(err, fields, files){
     //     console.log("FILES");
     //     console.log(files);
