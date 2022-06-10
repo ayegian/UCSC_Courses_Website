@@ -357,7 +357,7 @@ function App() {
     const config = {
       headers: {
         'content-type': 'multipart/form-data',
-        'Access-Control-Allow-Origin' : 'https://ucsc-courses-website-server.vercel.app/api/post-transcript',        
+        // 'Access-Control-Allow-Origin' : 'https://ucsc-courses-website-server.vercel.app/api/post-transcript',        
       },
     };
     // pdfUtil.pdfToText(file.name, function(err, data) {
