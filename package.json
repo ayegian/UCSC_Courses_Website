@@ -9,6 +9,7 @@
     "@architect/sandbox": "^5.0"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
     "pdf.js-extract": "^0.2.0",
     "python-shell": "^3.0.1"
   }
