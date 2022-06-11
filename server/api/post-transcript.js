@@ -1,6 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const formidable = require("formidable-serverless");
+const fs = require("fs-extra");
+const { restart } = require('nodemon');
+const {PythonShell} =require('python-shell');
+const PDFExtract = require('pdf.js-extract').PDFExtract;
+var pdfUtil = require('pdf-to-text');
+
 
 var corsOptions = {
     origin: '*',
@@ -10,6 +18,8 @@ router.post("/", cors(corsOptions), async (req, res)=>{
     console.log("POSt transcript");
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
+    const form = new formidable.IncomingForm();
+
     //res.send("TEST2");
   // another common pattern
    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
@@ -22,7 +32,6 @@ router.post("/", cors(corsOptions), async (req, res)=>{
     //   return
     // }
     res.send(req);
-    // const form = new formidable.IncomingForm();
 
     // form.parse(req, function(err, fields, files){
     //     res.send("POST TEST");
