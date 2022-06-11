@@ -386,7 +386,6 @@ function App() {
 
   async function testPostFile(){
     updateUploaded(1);
-    //console.log("ALL COURSES: ", allCourses);
     //console.log("POSTING FILE: ", file.name);
     const formData = new FormData();
     formData.append('file', file);
