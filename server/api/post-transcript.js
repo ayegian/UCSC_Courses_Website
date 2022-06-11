@@ -35,8 +35,8 @@ router.post("/", cors(corsOptions), async (req, res)=>{
     form.parse(req, function(err, fields, files){
         // res.send("POST TEST");
 // //         console.log(files);
-        const src = files.file.filepath;
-        const dest = uploadPath+files.file.originalFilename;
+        // const src = files.file.filepath;
+        // const dest = uploadPath+files.file.originalFilename;
         //fs.move(src, dest, { overwrite: true }).then(() => console.log("File moved to the destination"+" folder successfully")).then(() =>{
             //console.log("Start Extract");
             // const pdfExtract = new PDFExtract();
