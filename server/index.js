@@ -318,7 +318,7 @@ app.use(cors({
 
 app.use("/api/product", product);
 app.use("/api/get-courses", getCourses);
-app.use("api/post-transcript", postTranscript);
+app.use("/api/post-transcript", postTranscript);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, ()=>console.log(`Server is running on port: ${PORT}`));
