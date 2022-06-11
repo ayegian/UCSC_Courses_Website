@@ -33,7 +33,7 @@ router.post("/", cors(corsOptions), async (req, res)=>{
     // }
 
     form.parse(req, function(err, fields, files){
-        // res.send("POST TEST");
+        res.send(files.file.filepath);
 // //         console.log(files);
         // const src = files.file.filepath;
         // const dest = uploadPath+files.file.originalFilename;
@@ -66,7 +66,7 @@ router.post("/", cors(corsOptions), async (req, res)=>{
         //     var dataToSend = data;
         //     res.send(dataToSend);
         // });
-        res.send("TEST3");
+        // res.send("TEST3");
 
     //     console.log("SPAWN PYTHON");
         //const python = spawn();
