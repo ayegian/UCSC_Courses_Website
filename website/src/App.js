@@ -378,7 +378,8 @@ function App() {
     //var courses = await Axios.post("http://localhost:8080/api/post-transcript", formData, config).then(response=>{console.log(response.data); parsePDF(response.data, updateCreditsFunc);});
     // var courses = await Axios.post("https://ucsc-courses-website-server.vercel.app/api/post-transcript", formData, config).then(response=>{ parsePDF(response.data, updateCreditsFunc);});
     var courses = await Axios.post("https://ucsc-courses-website-server.vercel.app/api/post-transcript", formData, config).then(response=>{console.log("RESPONSE");console.log(response.data); parsePDF(response.data, updateCreditsFunc);});
-    
+    //var courses = await Axios.get("https://ucsc-courses-website-server.vercel.app/api/post-transcript", formData, config).then(response=>{console.log("RESPONSE");console.log(response.data); parsePDF(response.data, updateCreditsFunc);});
+
     console.log("COURSES: ", courses)
     updateUploaded(2);
   }

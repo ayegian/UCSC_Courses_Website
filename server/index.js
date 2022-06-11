@@ -309,6 +309,8 @@ const express = require("express");
 const app = express();
 const product = require("./api/product");
 const getCourses = require("./api/get-courses");
+const postTranscript = require("./api/post-transcript");
+
 app.use(cors());
 app.use(cors({
     origin: '*'
@@ -316,13 +318,12 @@ app.use(cors({
 
 app.use("/api/product", product);
 app.use("/api/get-courses", getCourses);
+app.use("api/post-transcript", postTranscript);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, ()=>console.log(`Server is running on port: ${PORT}`));
 
 
-// const postTranscript = require("./api/post-transcript");
-// app.use("api/post-transcript", postTranscript);
 
 // app.listen(PORT, () => {
 //     console.log("RUNNING");
