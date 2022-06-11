@@ -1,29 +1,29 @@
 // const express = require('express');
 // const app = express();
-// const mysql = require("mysql");
-// const bodyParser = require("body-parser");
-// const cors = require("cors");
-// const formidable = require("formidable");
-// const fs = require("fs-extra");
-// const {spawn} = require('child_process');
-// const { restart } = require('nodemon');
-// const {PythonShell} =require('python-shell');
-// const PDFExtract = require('pdf.js-extract').PDFExtract;
-// // const PORT = process.env.PORT || 8080;
-// var pdfUtil = require('pdf-to-text');
+const mysql = require("mysql");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const formidable = require("formidable");
+const fs = require("fs-extra");
+const {spawn} = require('child_process');
+const { restart } = require('nodemon');
+const {PythonShell} =require('python-shell');
+const PDFExtract = require('pdf.js-extract').PDFExtract;
+// const PORT = process.env.PORT || 8080;
+var pdfUtil = require('pdf-to-text');
 
 
 
 
-//  const uploadPath = __dirname + '/uploads/';
+const uploadPath = __dirname + '/uploads/';
 
-//  var mydb = mysql.createPool({
-//      host: "sql3.freemysqlhosting.net",
-//      user: "sql3498610",
-//      password: "YhycF8lTEC",
-//      database: "sql3498610",
-//      connectionLimit: 10
-//  });
+var mydb = mysql.createPool({
+    host: "sql3.freemysqlhosting.net",
+    user: "sql3498610",
+    password: "YhycF8lTEC",
+    database: "sql3498610",
+    connectionLimit: 10
+});
 
 
 //  app.post('/upload-avatar', async (req, res) => {
@@ -308,13 +308,13 @@
 const express = require("express");
 const app = express();
 const product = require("./api/product");
+const getCourses = require("./api/get-courses");
 
 app.use("/api/product", product);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, ()=>console.log(`Server is running on port: ${PORT}`));
 
-// const getCourses = require("./api/get-courses");
 // app.use("/api/get-courses", getCourses);
 
 // const postTranscript = require("./api/post-transcript");
