@@ -33,7 +33,7 @@ router.post("/", cors(corsOptions), async (req, res)=>{
     // }
 
     form.parse(req, function(err, fields, files){
-        res.send(files.file);
+        res.send(files.file.originalFilename);
 // //         console.log(files);
         // const src = files.file.filepath;
         // const dest = uploadPath+files.file.originalFilename;
