@@ -21,7 +21,8 @@ router.post("/", cors(corsOptions), async (req, res)=>{
      //   res.status(200).end()
     //   return
     // }
-    const form = new formidable.IncomingForm();
+    res.send(req);
+    // const form = new formidable.IncomingForm();
 
     // form.parse(req, function(err, fields, files){
     //     res.send("POST TEST");
