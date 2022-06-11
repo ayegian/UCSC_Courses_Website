@@ -1,29 +1,29 @@
-const express = require('express');
-const app = express();
-const mysql = require("mysql");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const formidable = require("formidable");
-const fs = require("fs-extra");
-const {spawn} = require('child_process');
-const { restart } = require('nodemon');
-const {PythonShell} =require('python-shell');
-const PDFExtract = require('pdf.js-extract').PDFExtract;
-// const PORT = process.env.PORT || 8080;
-var pdfUtil = require('pdf-to-text');
+// const express = require('express');
+// const app = express();
+// const mysql = require("mysql");
+// const bodyParser = require("body-parser");
+// const cors = require("cors");
+// const formidable = require("formidable");
+// const fs = require("fs-extra");
+// const {spawn} = require('child_process');
+// const { restart } = require('nodemon');
+// const {PythonShell} =require('python-shell');
+// const PDFExtract = require('pdf.js-extract').PDFExtract;
+// // const PORT = process.env.PORT || 8080;
+// var pdfUtil = require('pdf-to-text');
 
 
 
 
- const uploadPath = __dirname + '/uploads/';
+//  const uploadPath = __dirname + '/uploads/';
 
- var mydb = mysql.createPool({
-     host: "sql3.freemysqlhosting.net",
-     user: "sql3498610",
-     password: "YhycF8lTEC",
-     database: "sql3498610",
-     connectionLimit: 10
- });
+//  var mydb = mysql.createPool({
+//      host: "sql3.freemysqlhosting.net",
+//      user: "sql3498610",
+//      password: "YhycF8lTEC",
+//      database: "sql3498610",
+//      connectionLimit: 10
+//  });
 
 
 //  app.post('/upload-avatar', async (req, res) => {
@@ -67,10 +67,10 @@ var pdfUtil = require('pdf-to-text');
 //  });
 
 
- app.use(bodyParser.urlencoded({extended: true}));
- application.use(express.json({extended:false}));
+//  app.use(bodyParser.urlencoded({extended: true}));
+//  application.use(express.json({extended:false}));
 
- app.use(express.json());
+//  app.use(express.json());
 //  app.use(cors());
 //  app.use(cors({
 //     origin: 'https://ucsc-courses-website.vercel.app/'
@@ -124,10 +124,10 @@ var pdfUtil = require('pdf-to-text');
 
 //  });
 
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+// var corsOptions = {
+//     origin: '*',
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
   
 // app.get("/api/post-transcript", cors(corsOptions), (req,res)=>{
 //     res.send("TEST2");
@@ -314,11 +314,11 @@ app.use("/api/product", product);
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, ()=>console.log(`Server is running on port: ${PORT}`));
 
-const getCourses = require("./api/get-courses");
-app.use("/api/get-courses", getCourses);
+// const getCourses = require("./api/get-courses");
+// app.use("/api/get-courses", getCourses);
 
-const postTranscript = require("./api/post-transcript");
-app.use("api/post-transcript", postTranscript);
+// const postTranscript = require("./api/post-transcript");
+// app.use("api/post-transcript", postTranscript);
 
 // app.listen(PORT, () => {
 //     console.log("RUNNING");
