@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const formidable = require("formidable-serverless");
 const fs = require("fs-extra");
 const { restart } = require('nodemon');
+const {spawn} = require('child_process');
 const {PythonShell} =require('python-shell');
 const PDFExtract = require('pdf.js-extract').PDFExtract;
 var pdfUtil = require('pdf-to-text');
