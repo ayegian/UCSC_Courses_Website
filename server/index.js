@@ -305,8 +305,8 @@
 // });
 
 
-// const express = require("express");
-// const app = express();
+const express = require("express");
+const app = express();
 const product = require("./api/product");
 
 app.use("/api/product", product);
