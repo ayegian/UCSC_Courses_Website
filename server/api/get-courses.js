@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
+const cors = require("cors");
 
 var mydb = mysql.createPool({
     host: "sql3.freemysqlhosting.net",
@@ -9,9 +10,12 @@ var mydb = mysql.createPool({
     database: "sql3498610",
     connectionLimit: 10
 });
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
-
-router.get("/", async (req, res)=>{
+router.get("/",cors(corsOptions), async (req, res)=>{
     try{
         console.log("Connected")
         sql = "SELECT * FROM courses2 WHERE GE != '' ORDER BY GE, Name";

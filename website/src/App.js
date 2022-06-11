@@ -278,8 +278,11 @@ function App() {
   const [filePath, updatePath] = React.useState("No file chosen");
   const [fileUploaded, updateUploaded] = React.useState(0);
   async function getCourses(){
+    console.log("GET COURSES");
     // var courses = await Axios.get("http://localhost:8080/api/get-courses");
     var courses = await Axios.get("https://ucsc-courses-website-server.vercel.app/api/get-courses");
+    console.log("COURSES RESP");
+    console.log(courses);
     courses = courses.data;
     courses.forEach(element => {
       element.GE = element.GE.substr(1, element.GE.length-2);

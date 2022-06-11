@@ -71,9 +71,9 @@ var mydb = mysql.createPool({
 //  application.use(express.json({extended:false}));
 
 //  app.use(express.json());
-//  app.use(cors());
-//  app.use(cors({
-//     origin: 'https://ucsc-courses-website.vercel.app/'
+// app.use(cors());
+// app.use(cors({
+//     origin: '*'
 // }));
 //  app.use(function (req, res, next) {
 //      res.header("Access-Control-Allow-origin", "*")
@@ -309,6 +309,10 @@ const express = require("express");
 const app = express();
 const product = require("./api/product");
 const getCourses = require("./api/get-courses");
+app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 
 app.use("/api/product", product);
 app.use("/api/get-courses", getCourses);
