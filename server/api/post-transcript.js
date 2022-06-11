@@ -10,6 +10,7 @@ router.post("/", cors(corsOptions), async (req, res)=>{
     console.log("POSt transcript");
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
+    res.send("TEST2");
   // another common pattern
    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
     // res.setHeader(
@@ -20,11 +21,11 @@ router.post("/", cors(corsOptions), async (req, res)=>{
      //   res.status(200).end()
     //   return
     // }
-    const form = new formidable.IncomingForm();
+    // const form = new formidable.IncomingForm();
 
-    form.parse(req, function(err, fields, files){
-        res.send("POST TEST");
-    });
+    // form.parse(req, function(err, fields, files){
+    //     res.send("POST TEST");
+    // });
 });
 
 // router.post("/", cors(corsOptions), async (req, res)=>{
