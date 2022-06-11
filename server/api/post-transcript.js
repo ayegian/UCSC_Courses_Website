@@ -10,7 +10,7 @@ router.post("/", cors(corsOptions), async (req, res)=>{
     console.log("POSt transcript");
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.send("TEST2");
+    //res.send("TEST2");
   // another common pattern
    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
     // res.setHeader(
