@@ -72,9 +72,9 @@ var pdfUtil = require('pdf-to-text');
 
  app.use(express.json());
 //  app.use(cors());
- app.use(cors({
-    origin: 'https://ucsc-courses-website.vercel.app/'
-}));
+//  app.use(cors({
+//     origin: 'https://ucsc-courses-website.vercel.app/'
+// }));
 //  app.use(function (req, res, next) {
 //      res.header("Access-Control-Allow-origin", "*")
 //      res.setHeader('Access-Control-Allow-Methods', "GET,POST,OPTIONS")
