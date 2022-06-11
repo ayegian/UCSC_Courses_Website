@@ -311,11 +311,11 @@ const product = require("./api/product");
 const getCourses = require("./api/get-courses");
 
 app.use("/api/product", product);
+app.use("/api/get-courses", getCourses);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, ()=>console.log(`Server is running on port: ${PORT}`));
 
-// app.use("/api/get-courses", getCourses);
 
 // const postTranscript = require("./api/post-transcript");
 // app.use("api/post-transcript", postTranscript);
