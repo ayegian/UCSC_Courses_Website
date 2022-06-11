@@ -6,7 +6,7 @@ var corsOptions = {
     origin: '*',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
-router.get("/", cors(corsOptions), async (req, res)=>{
+router.post("/", cors(corsOptions), async (req, res)=>{
     try{
         console.log("Connected")
         res.send("POST TRANSCRIPT");
