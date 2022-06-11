@@ -59,14 +59,14 @@ router.post("/", cors(corsOptions), async (req, res)=>{
             //console.log("End Extract");
 
         //});
-        pdfUtil.pdfToText(src, function(err, data) {
-            if (err) {throw(err);}
-            console.log("Data:");
-            console.log(data); //print all text    
-            var dataToSend = data;
-            res.send(dataToSend);
-        });
-        // res.send("TEST");
+        // pdfUtil.pdfToText(src, function(err, data) {
+        //     if (err) {throw(err);}
+        //     console.log("Data:");
+        //     console.log(data); //print all text    
+        //     var dataToSend = data;
+        //     res.send(dataToSend);
+        // });
+        res.send("TEST3");
 
     //     console.log("SPAWN PYTHON");
         //const python = spawn();
