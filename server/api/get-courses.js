@@ -3,13 +3,21 @@ const router = express.Router();
 const mysql = require("mysql");
 const cors = require("cors");
 
+// var mydb = mysql.createPool({
+//     host: "sql3.freemysqlhosting.net",
+//     user: "sql3498610",
+//     password: "YhycF8lTEC",
+//     database: "sql3498610",
+//     connectionLimit: 10
+// });
 var mydb = mysql.createPool({
-    host: "sql3.freemysqlhosting.net",
-    user: "sql3498610",
-    password: "YhycF8lTEC",
-    database: "sql3498610",
+    host: "us-cdbr-east-05.cleardb.net",
+    user: "b3ef8190e13fa9",
+    password: "ab8600cb",
+    database: "heroku_a2ca7e30acdef44",
     connectionLimit: 10
 });
+
 var corsOptions = {
     origin: '*',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
